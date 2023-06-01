@@ -102,7 +102,7 @@ export default {
     </div>
   <div v-else="">
 
-    <div class="w-96 h-96 rounded-lg shadow-gray-500 drop-shadow-lg border border-opacity-5 border-gray-500 mt-5 flex-row justify-center text-center bg-black bg-opacity-30 text-gray-300 backdrop-blur-lg">
+    <div class="w-96 h-96 rounded-lg shadow-gray-500 bg-slate-400 drop-shadow-lg border border-opacity-5 border-gray-500 mt-5 flex-row justify-center text-center bg-black bg-opacity-30 text-gray-300 backdrop-blur-lg">
 
       <!-- Head -->
       <div class="pt-5 h-24 flex flex-row mr-5">
@@ -157,12 +157,12 @@ export default {
         <div class="bg-green-500 w-1/5"></div>
        -->
       <div name="Days" ref="days">
-        <div name="Buttons" class="flex justify-evenly pt-2 ">
-          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(1)"> {{ day_map[new Date(forecast.list[0].dt_txt).getDay()] }}</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(2)"> {{ day_map[new Date(forecast.list[9].dt_txt).getDay()] }}</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(3)"> {{ day_map[new Date(forecast.list[18].dt_txt).getDay()] }}</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(4)"> {{ day_map[new Date(forecast.list[27].dt_txt).getDay()] }}</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(5)"> {{ day_map[new Date(forecast.list[36].dt_txt).getDay()] }}</button>
+        <div name="Buttons" class="flex justify-evenly pt-2">
+          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(1)">Day 1</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(2)">Day 2</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(3)">Day 3</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(4)">Day 4</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(5)">Day 5</button>
         </div>
 
           <div class="flex h-full overflow-x-scroll space-x-5">
