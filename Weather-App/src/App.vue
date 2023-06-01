@@ -9,6 +9,7 @@ export default {
       data: null,
       forecast: null,
       forecast_day: null,
+      day_map: {"1":"Monday","2":"Tuesday","3":"Wednesday","4":"Thursday","5":"Friday","6":"Saturday","0":"Sunday"}
     };
   },
   methods: {
@@ -101,7 +102,7 @@ export default {
     </div>
   <div v-else="">
 
-    <div class="w-96 h-96 rounded-lg shadow-gray-500 drop-shadow-lg border border-opacity-5 border-gray-500 mt-5 flex-row justify-center text-center backdrop-blur-lg divide-y-2 divide-gray-300">
+    <div class="w-96 h-96 rounded-lg shadow-gray-500 drop-shadow-lg border border-opacity-5 border-gray-500 mt-5 flex-row justify-center text-center bg-black bg-opacity-30 text-gray-300 backdrop-blur-lg">
 
       <!-- Head -->
       <div class="pt-5 h-24 flex flex-row mr-5">
@@ -120,15 +121,15 @@ export default {
       <div name="parent" class="flex pt-3">
         <div name="child1" class="w-1/2 pl-1 flex flex-col items-start justify-start">
           <div class="flex">
-            <img src="/assets/humidity.png" width="24" class="mr-1">
+            <img src="/assets/humidity.png" width="24" class="mr-1 inv">
             <p>{{data.main.humidity}} %</p>
           </div>
           <div class="flex">
-            <img src="/assets/pressure.png" width="24" class="mr-1">
+            <img src="/assets/pressure.png" width="24" class="mr-1 inv">
             <p>{{data.main.pressure}} hPa</p>
           </div>
           <div class="flex">
-            <img src="/assets/sunrise.png" width="24" class="mr-1">
+            <img src="/assets/sunrise.png" width="24" class="mr-1 inv">
             <h1>{{timestampToHour(data.sys.sunrise)}}</h1>
           </div>
         </div>
@@ -136,15 +137,15 @@ export default {
         <div name="child2" class="w-1/2 pr-1 flex flex-col items-end justify-start">
           <div class="flex">
             <h1 class="mr-1">{{degToTxt(data.wind.deg)}} {{(data.wind.speed*3.6).toFixed(1)}} km/h</h1>
-            <img src="/assets/wind.png" width="24">
+            <img src="/assets/wind.png" width="24" class="inv">
           </div>
           <div class="flex">
             <h1 class="mr-1">{{data.clouds.all}} %</h1>
-            <img src="/assets/cloudiness.png" width="24">
+            <img src="/assets/cloudiness.png" width="24" class="inv">
           </div>
           <div class="flex">
             <h1 class="mr-1">{{timestampToHour(data.sys.sunset)}}</h1>
-            <img src="/assets/sunset.png" width="24">
+            <img src="/assets/sunset.png" width="24" class="inv">
           </div>
         </div>
 
@@ -156,15 +157,15 @@ export default {
         <div class="bg-green-500 w-1/5"></div>
        -->
       <div name="Days" ref="days">
-        <div name="Buttons" class="flex justify-evenly pt-2">
-          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(1)">Day 1</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(2)">Day 2</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(3)">Day 3</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(4)">Day 4</button>
-          <button  class="rounded-lg p-1 backdrop-blur-2xl drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(5)">Day 5</button>
+        <div name="Buttons" class="flex justify-evenly pt-2 ">
+          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(1)"> {{ day_map[new Date(forecast.list[0].dt_txt).getDay()] }}</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(2)"> {{ day_map[new Date(forecast.list[9].dt_txt).getDay()] }}</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(3)"> {{ day_map[new Date(forecast.list[18].dt_txt).getDay()] }}</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(4)"> {{ day_map[new Date(forecast.list[27].dt_txt).getDay()] }}</button>
+          <button  class="rounded-lg p-1 backdrop-blur-2xl bg-black bg-opacity-30 drop-shadow-lg border border-opacity-20 border-gray-100 hover:backdrop-blur-md hover:drop-shadow-sm" @click="setForecastDay(5)"> {{ day_map[new Date(forecast.list[36].dt_txt).getDay()] }}</button>
         </div>
 
-          <div class="flex h-full overflow-x-scroll">
+          <div class="flex h-full overflow-x-scroll space-x-5">
             <div v-for="day in forecast_day" :key="day.dt" class="w-16 relative mr-2 ml-2 divide-y-2 divide-gray-300">
                   <img class="w-16 relative" :src="fetchIcon(day.weather[0].icon)">
                   <p class="w-16 relative">{{ timestampToHour(day.dt)}}</p>
